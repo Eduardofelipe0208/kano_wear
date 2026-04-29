@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KANO WEAR – Camisetas del Mundial</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Barlow+Condensed:wght@400;700;900&display=swap" rel="stylesheet" />
+
+
+</head>
+<body>
+
+<!-- ===========================
+  HEADER
+=========================== -->
+<header>
+  <a href="#" class="logo">KANO<span>WEAR</span></a>
+  <nav class="desktop-nav">
+    <a href="#">Inicio</a>
+    <a href="#shop">Tienda</a>
+    <a href="#contact">Contacto</a>
+  </nav>
+  <button class="hamburger" id="menuBtn" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="closeMenu()">🏠 Inicio</a>
+  <a href="#shop" onclick="closeMenu()">👕 Tienda</a>
+  <a href="#contact" onclick="closeMenu()">📞 Contacto</a>
+</nav>
+
+<!-- ===========================
+  HERO
+=========================== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⚡ Colección Mundial 2026</div>
+    <h1>CAMISETAS<br>DEL <em>MUNDIAL</em></h1>
+    <p class="hero-sub">Las mejores camisetas oficiales y réplicas ⚽🔥<br>Envíos a todo el país</p>
+    <div class="hero-actions">
+      <a href="#shop" class="btn-primary">Comprar ahora</a>
+      <a href="#shop" class="btn-secondary">Ver catálogo</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">+500</div>
+        <div class="stat-label">Clientes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Selecciones</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Calificación</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+  SHIPPING BANNER
+=========================== -->
+<div class="shipping-banner">
+  🚚 Envíos disponibles a todo Venezuela &nbsp;|&nbsp; 🔥 Paga contra entrega &nbsp;|&nbsp; ✅ Calidad garantizada
+</div>
+
+<!-- ===========================
+  TRUST BAR
+=========================== -->
+<div class="trust-bar">
+  <div class="trust-grid">
+    <div class="trust-item fade-up">
+      <div class="trust-icon">🚚</div>
+      <div class="trust-title">Envío rápido</div>
+      <div class="trust-desc">A todo el país</div>
+    </div>
+    <div class="trust-item fade-up">
+      <div class="trust-icon">✅</div>
+      <div class="trust-title">Calidad premium</div>
+      <div class="trust-desc">Materiales de primera</div>
+    </div>
+    <div class="trust-item fade-up">
+      <div class="trust-icon">💬</div>
+      <div class="trust-title">Atención directa</div>
+      <div class="trust-desc">Via WhatsApp</div>
+    </div>
+    <div class="trust-item fade-up">
+      <div class="trust-icon">🔄</div>
+      <div class="trust-title">Cambios</div>
+      <div class="trust-desc">Sin complicaciones</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===========================
+  SHOP / PRODUCTS
+=========================== -->
+<section class="section" id="shop">
+  <div class="section-header fade-up">
+    <div class="section-eyebrow">🔥 Más vendidos</div>
+    <div class="section-title">Nuestra Colección</div>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- ===========================
+  FOOTER
+=========================== -->
+<footer id="contact">
+  <div class="footer-logo">KANO<span>WEAR</span></div>
+  <p class="footer-tagline">Las mejores camisetas de fútbol ⚽</p>
+  <div class="footer-links">
+    <a href="#">Inicio</a>
+    <a href="#shop">Tienda</a>
+    <a href="https://wa.me/584120936783" target="_blank">WhatsApp</a>
+  </div>
+  <p class="footer-copy">© 2026 KANO WEAR. Todos los derechos reservados.</p>
+</footer>
+
+<!-- ===========================
+  MODAL
+=========================== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-title">Finalizar pedido</div>
+    <p class="modal-subtitle">Completa tus datos y te contactamos por WhatsApp</p>
+
+    <div class="modal-product-preview">
+      <div class="modal-product-emoji" id="modalEmoji">👕</div>
+      <div class="modal-product-info">
+        <div class="modal-product-name" id="modalProductName">—</div>
+        <div class="modal-product-size" id="modalProductSize">Talla: —</div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" id="inputNombre" placeholder="Juan" />
+      </div>
+      <div class="form-group">
+        <label>Apellido</label>
+        <input type="text" id="inputApellido" placeholder="Pérez" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Dirección de entrega</label>
+      <input type="text" id="inputDireccion" placeholder="Calle, Ciudad, Estado..." />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Producto</label>
+        <input type="text" id="inputProducto" readonly />
+      </div>
+      <div class="form-group">
+        <label>Talla</label>
+        <input type="text" id="inputTalla" readonly />
+      </div>
+    </div>
+
+    <button class="btn-whatsapp" id="btnWhatsApp">
+      <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Confirmar por WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- ===========================
+  FLOATING WHATSAPP
+=========================== -->
+<a href="https://wa.me/584120936783" target="_blank" class="float-wa" aria-label="WhatsApp">
+  <div class="float-wa-pulse"></div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ===========================
+  JAVASCRIPT
+=========================== -->
+<script>
+/* =====================================================
+   PRODUCT DATA — Edit here to update products
+===================================================== */
+const PRODUCTS = [
+  {
+    id: 1,
+    name: "Camiseta Argentina",
+    flag: "🇦🇷",
+    emoji: "⚽",
+    price: "$25",
+    badge: "🔥 Más vendida",
+    // Replace 'image' with a real URL or relative path when deploying
+    image: null,
+    colors: ["celeste", "azul oscuro"],
+  },
+  {
+    id: 2,
+    name: "Camiseta Brasil",
+    flag: "🇧🇷",
+    emoji: "⚽",
+    price: "$25",
+    badge: "🔥 Top ventas",
+    image: null,
+  },
+  {
+    id: 3,
+    name: "Camiseta Francia",
+    flag: "🇫🇷",
+    emoji: "⚽",
+    price: "$22",
+    badge: null,
+    image: null,
+  },
+  {
+    id: 4,
+    name: "Camiseta Alemania",
+    flag: "🇩🇪",
+    emoji: "⚽",
+    price: "$22",
+    badge: "🆕 Nueva",
+    image: null,
+  },
+  {
+    id: 5,
+    name: "Camiseta España",
+    flag: "🇪🇸",
+    emoji: "⚽",
+    price: "$22",
+    badge: null,
+    image: null,
+  },
+  {
+    id: 6,
+    name: "Camiseta Portugal",
+    flag: "🇵🇹",
+    emoji: "⚽",
+    price: "$22",
+    badge: "🔥 Popular",
+    image: null,
+  },
+];
+
+const SIZES = ["S", "M", "L", "XL"];
+const WA_NUMBER = "584120936783";
+
+/* =====================================================
+   STATE
+===================================================== */
+let currentProduct = null;
+let currentSize = null;
+
+/* =====================================================
+   RENDER PRODUCTS
+===================================================== */
+function renderProducts() {
+  const grid = document.getElementById("productsGrid");
+  grid.innerHTML = "";
+
+  PRODUCTS.forEach((p) => {
+    const card = document.createElement("div");
+    card.className = "product-card fade-up";
+
+    const sizeButtons = SIZES.map(
+      (s) => `<button class="size-btn" data-size="${s}" data-product-id="${p.id}">${s}</button>`
+    ).join("");
+
+    const badgeHTML = p.badge
+      ? `<div class="product-badge">${p.badge}</div>`
+      : "";
+
+    const imageHTML = p.image
+      ? `<img src="${p.image}" alt="${p.name}" loading="lazy" />`
+      : `<div class="product-placeholder">
+           <div class="jersey-icon">👕</div>
+           <div class="jersey-flag">${p.flag}</div>
+         </div>`;
+
+    card.innerHTML = `
+      ${badgeHTML}
+      <div class="product-img-wrap">
+        ${imageHTML}
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.flag} ${p.name}</div>
+        <div class="product-price">${p.price}</div>
+        <div class="size-selector">${sizeButtons}</div>
+        <button class="btn-comprar" data-product-id="${p.id}" disabled>
+          Selecciona talla
+        </button>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+
+  // Size click logic
+  grid.addEventListener("click", (e) => {
+    // Size button
+    if (e.target.classList.contains("size-btn")) {
+      const pid = parseInt(e.target.dataset.productId);
+      const size = e.target.dataset.size;
+
+      // Deactivate siblings
+      const allSizeBtns = grid.querySelectorAll(`.size-btn[data-product-id="${pid}"]`);
+      allSizeBtns.forEach((b) => b.classList.remove("active"));
+      e.target.classList.add("active");
+
+      // Enable buy button
+      const buyBtn = grid.querySelector(`.btn-comprar[data-product-id="${pid}"]`);
+      buyBtn.disabled = false;
+      buyBtn.textContent = `Comprar — ${size}`;
+      buyBtn.dataset.selectedSize = size;
+    }
+
+    // Buy button
+    if (e.target.classList.contains("btn-comprar") && !e.target.disabled) {
+      const pid = parseInt(e.target.dataset.productId);
+      const size = e.target.dataset.selectedSize;
+      openModal(pid, size);
+    }
+  });
+}
+
+/* =====================================================
+   MODAL LOGIC
+===================================================== */
+function openModal(productId, size) {
+  const product = PRODUCTS.find((p) => p.id === productId);
+  if (!product) return;
+
+  currentProduct = product;
+  currentSize = size;
+
+  document.getElementById("modalEmoji").textContent = product.flag;
+  document.getElementById("modalProductName").textContent = product.name;
+  document.getElementById("modalProductSize").textContent = `Talla: ${size}  •  ${product.price}`;
+  document.getElementById("inputProducto").value = product.name;
+  document.getElementById("inputTalla").value = size;
+
+  // Clear name/address fields
+  document.getElementById("inputNombre").value = "";
+  document.getElementById("inputApellido").value = "";
+  document.getElementById("inputDireccion").value = "";
+
+  document.getElementById("modalOverlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  document.getElementById("modalOverlay").classList.remove("open");
+  document.body.style.overflow = "";
+  currentProduct = null;
+  currentSize = null;
+}
+
+document.getElementById("modalClose").addEventListener("click", closeModal);
+document.getElementById("modalOverlay").addEventListener("click", (e) => {
+  if (e.target === document.getElementById("modalOverlay")) closeModal();
+});
+
+/* =====================================================
+   WHATSAPP SUBMIT
+===================================================== */
+document.getElementById("btnWhatsApp").addEventListener("click", () => {
+  const nombre = document.getElementById("inputNombre").value.trim();
+  const apellido = document.getElementById("inputApellido").value.trim();
+  const direccion = document.getElementById("inputDireccion").value.trim();
+
+  if (!nombre || !apellido || !direccion) {
+    alert("Por favor completa todos los campos antes de continuar.");
+    return;
+  }
+
+  if (!currentProduct || !currentSize) return;
+
+  const message = `Hola, quiero comprar:
+
+🛍️ Producto: ${currentProduct.name}
+👕 Talla: ${currentSize}
+💰 Precio: ${currentProduct.price}
+
+👤 Nombre: ${nombre} ${apellido}
+📍 Dirección: ${direccion}
+
+¡Gracias!`;
+
+  const encodedMsg = encodeURIComponent(message);
+  const waURL = `https://wa.me/${WA_NUMBER}?text=${encodedMsg}`;
+
+  window.open(waURL, "_blank");
+  closeModal();
+});
+
+/* =====================================================
+   HAMBURGER MENU
+===================================================== */
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("open");
+});
+
+function closeMenu() {
+  mobileMenu.classList.remove("open");
+}
+
+/* =====================================================
+   SCROLL FADE-IN
+===================================================== */
+function checkFadeIn() {
+  const items = document.querySelectorAll(".fade-up");
+  const threshold = window.innerHeight * 0.88;
+
+  items.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < threshold) {
+      el.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", checkFadeIn, { passive: true });
+window.addEventListener("resize", checkFadeIn, { passive: true });
+
+/* =====================================================
+   INIT
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  renderProducts();
+  setTimeout(checkFadeIn, 100);
+});
+</script>
+</body>
+</html>
