@@ -127,6 +127,40 @@
 <!-- ===========================
   MODAL
 =========================== -->
+
+<div class="modal-overlay" id="productViewOverlay">
+  <div class="modal product-view-modal">
+    <button class="modal-close" onclick="closeProductView()">✕</button>
+    
+    <div class="product-view-grid">
+      <div class="product-gallery">
+        <div class="main-image-wrapper">
+          <img id="pvMainImage" src="" alt="Producto principal" />
+        </div>
+        <div class="thumbnail-row" id="pvThumbnails">
+          </div>
+      </div>
+
+      <div class="product-details">
+        <div class="pv-badge" id="pvBadge"></div>
+        <h2 class="pv-title" id="pvTitle"></h2>
+        <div class="pv-price" id="pvPrice"></div>
+        <p class="pv-description" id="pvDesc"></p>
+        
+        <div class="pv-sizes-section">
+          <label>Tallas disponibles:</label>
+          <div class="pv-sizes-grid" id="pvSizes">
+            </div>
+        </div>
+
+        <button class="btn-comprar" id="btnProceedCheckout" disabled>
+          Selecciona una talla
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="modal-close" id="modalClose">✕</button>
@@ -192,78 +226,145 @@
 =========================== -->
 <script>
 /* =====================================================
-   PRODUCT DATA — Edit here to update products
+   PRODUCT DATA — Configura tus imágenes, descripciones y disponibilidad de tallas aquí
 ===================================================== */
 const PRODUCTS = [
   {
     id: 1,
-    name: "Camiseta Argentina",
+    name: "Camiseta Argentina Titular",
     flag: "🇦🇷",
     emoji: "⚽",
     price: "$25",
     badge: "🔥 Más vendida",
-    // Replace 'image' with a real URL or relative path when deploying
-    image: "img/ArgentinaV.jpeg",
-    colors: ["celeste", "azul oscuro"],
+    description: "La camiseta titular oficial con las 3 estrellas bordadas. Tecnología de ventilación avanzada, escudo premium termoaplicado y ajuste perfecto para rendimiento y uso diario.",
+    // Aquí pones la portada, las fotos extra y el gif al final
+    images: [
+      "img/ArgentinaV.jpeg", 
+      "https://images.unsplash.com/photo-1508344928928-7137b29de216?w=500", // Foto 2 (Ejemplo)
+      "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=500", // Foto 3 (Ejemplo)
+      "https://media.giphy.com/media/xT1R9B7cGalGte8O7i/giphy.gif"          // GIF (Ejemplo)
+    ],
+    // Control de inventario: true = disponible, false = agotada
+    sizes: {
+      "S": true,
+      "M": true,
+      "L": false,  // Esta aparecerá tachada y dirá "Agotada"
+      "XL": true
+    }
   },
   {
     id: 2,
-    name: "Camiseta Brasil",
+    name: "Camiseta Alemania Titular",
+    flag: "🇩🇪",
+    emoji: "⚽",
+    price: "$25",
+    badge: "🆕 Nueva",
+    description: "Un diseño clásico e imponente. La camiseta de Alemania presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
+    images: [
+      "img/AlemaniaL.jpeg",
+      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
+      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
+      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+    ],
+    sizes: { "S": true, "M": false, "L": true, "XL": false }
+  },
+
+  {
+    id: 3,
+    name: "Camiseta Francia Titular",
+    flag: "🇩🇪",
+    emoji: "⚽",
+    price: "$25",
+    badge: "🆕 Nueva",
+    description: "Un diseño clásico e imponente. La camiseta de Alemania presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
+    images: [
+      "img/FranciaL.jpeg",
+      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
+      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
+      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+    ],
+    sizes: { "S": true, "M": false, "L": true, "XL": false }
+  },
+
+   {
+    id: 4,
+    name: "Camiseta Portugal Titular",
+    flag: "🇵🇹",
+    emoji: "⚽",
+    price: "$25",
+    badge: "🆕 Nueva",
+    description: "Un diseño clásico e imponente. La camiseta de Portugal presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
+    images: [
+      "img/PortugalL.jpeg",
+      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
+      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
+      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+    ],
+    sizes: { "S": true, "M": false, "L": true, "XL": false }
+  },
+
+  {
+    id: 5,
+    name: "Camiseta Colombia Visitante",
+    flag: "co",
+    emoji: "⚽",
+    price: "$25",
+    badge: "🆕 Nueva",
+    description: "Un diseño clásico e imponente. La camiseta de Colombia presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
+    images: [
+      "img/ColombiaV.jpeg",
+      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
+      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
+      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+    ],
+    sizes: { "S": false, "M": false, "L": true, "XL": false }
+  },
+
+  {
+    id: 6,
+    name: "Camiseta Brasil Titular",
     flag: "🇧🇷",
     emoji: "⚽",
     price: "$25",
-    badge: "🔥 Top ventas",
-    image: "img/BrasilL.jpeg",
-  },
-  {
-    id: 3,
-    name: "Camiseta Francia",
-    flag: "🇫🇷",
-    emoji: "⚽",
-    price: "$22",
-    badge: null,
-    image: "img/FranciaL.jpeg",
-  },
-  {
-    id: 4,
-    name: "Camiseta Alemania",
-    flag: "🇩🇪",
-    emoji: "⚽",
-    price: "$22",
     badge: "🆕 Nueva",
-    image: "img/AlemaniaL.jpeg",
+    description: "Un diseño clásico e imponente. La camiseta de Brasil presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
+    images: [
+      "img/BrasilL.jpeg",
+      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
+      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
+      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+    ],
+    sizes: { "S": true, "M": false, "L": true, "XL": false }
   },
   {
-    id: 5,
-    name: "Camiseta Portugal Edición Especial",
-    flag: "🇵🇹",
+    id: 7,
+    name: "Camiseta Colombia Titular",
+    flag: "co",
     emoji: "⚽",
-    price: "$22",
-    badge: null,
-    image: "img/PortugalB.jpeg",
+    price: "$25",
+    badge: "🆕 Nueva",
+    description: "Un diseño clásico e imponente. La camiseta de Colombia presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
+    images: [
+      "img/ColombiaL.jpeg",
+      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
+      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
+      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+    ],
+    sizes: { "S": true, "M": false, "L": true, "XL": false }
   },
-  {
-    id: 6,
-    name: "Camiseta Portugal",
-    flag: "🇵🇹",
-    emoji: "⚽",
-    price: "$22",
-    badge: "🔥 Popular",
-    image: "img/PortugalL.jpeg" ,
-  },
+
+  
+  // Añade los demás productos siguiendo exactamente este mismo formato...
 ];
 
-const SIZES = ["S", "M", "L", "XL"];
 const WA_NUMBER = "584120936783";
 
-/* =====================================================
-   STATE
-===================================================== */
+/* STATE */
 let currentProduct = null;
 let currentSize = null;
 
 /* =====================================================
-   RENDER PRODUCTS
+   RENDER GRID CARDS (Tarjetas simplificadas)
 ===================================================== */
 function renderProducts() {
   const grid = document.getElementById("productsGrid");
@@ -273,87 +374,120 @@ function renderProducts() {
     const card = document.createElement("div");
     card.className = "product-card fade-up";
 
-    const sizeButtons = SIZES.map(
-      (s) => `<button class="size-btn" data-size="${s}" data-product-id="${p.id}">${s}</button>`
-    ).join("");
-
-    const badgeHTML = p.badge
-      ? `<div class="product-badge">${p.badge}</div>`
-      : "";
-
-    const imageHTML = p.image
-      ? `<img src="${p.image}" alt="${p.name}" loading="lazy" />`
-      : `<div class="product-placeholder">
-           <div class="jersey-icon">👕</div>
-           <div class="jersey-flag">${p.flag}</div>
-         </div>`;
+    const badgeHTML = p.badge ? `<div class="product-badge">${p.badge}</div>` : "";
+    // Usa la primera imagen del array como portada
+    const coverImage = p.images && p.images.length > 0 ? p.images[0] : "";
 
     card.innerHTML = `
       ${badgeHTML}
-      <div class="product-img-wrap">
-        ${imageHTML}
+      <div class="product-img-wrap" style="cursor: pointer;" onclick="openProductView(${p.id})">
+        <img src="${coverImage}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'"/>
       </div>
       <div class="product-info">
         <div class="product-name">${p.flag} ${p.name}</div>
         <div class="product-price">${p.price}</div>
-        <div class="size-selector">${sizeButtons}</div>
-        <button class="btn-comprar" data-product-id="${p.id}" disabled>
-          Selecciona talla
+        <button class="btn-comprar" style="background: transparent; border: 1.5px solid var(--yellow); color: var(--yellow);" onclick="openProductView(${p.id})">
+          Ver Detalles
         </button>
       </div>
     `;
-
     grid.appendChild(card);
-  });
-
-  // Size click logic
-  grid.addEventListener("click", (e) => {
-    // Size button
-    if (e.target.classList.contains("size-btn")) {
-      const pid = parseInt(e.target.dataset.productId);
-      const size = e.target.dataset.size;
-
-      // Deactivate siblings
-      const allSizeBtns = grid.querySelectorAll(`.size-btn[data-product-id="${pid}"]`);
-      allSizeBtns.forEach((b) => b.classList.remove("active"));
-      e.target.classList.add("active");
-
-      // Enable buy button
-      const buyBtn = grid.querySelector(`.btn-comprar[data-product-id="${pid}"]`);
-      buyBtn.disabled = false;
-      buyBtn.textContent = `Comprar — ${size}`;
-      buyBtn.dataset.selectedSize = size;
-    }
-
-    // Buy button
-    if (e.target.classList.contains("btn-comprar") && !e.target.disabled) {
-      const pid = parseInt(e.target.dataset.productId);
-      const size = e.target.dataset.selectedSize;
-      openModal(pid, size);
-    }
   });
 }
 
 /* =====================================================
-   MODAL LOGIC
+   PRODUCT VIEW MODAL LOGIC (Galería y Tallas)
 ===================================================== */
-function openModal(productId, size) {
+function openProductView(productId) {
   const product = PRODUCTS.find((p) => p.id === productId);
   if (!product) return;
 
   currentProduct = product;
+  currentSize = null; // Reiniciar selección
+
+  // Llenar información de texto
+  document.getElementById("pvBadge").innerHTML = product.badge ? `<span class="product-badge" style="position:relative; top:0; left:0; margin-bottom:10px; display:inline-block;">${product.badge}</span>` : "";
+  document.getElementById("pvTitle").textContent = product.name;
+  document.getElementById("pvPrice").textContent = product.price;
+  document.getElementById("pvDesc").textContent = product.description;
+
+  // Llenar Galería
+  const mainImg = document.getElementById("pvMainImage");
+  const thumbsContainer = document.getElementById("pvThumbnails");
+  
+  if (product.images && product.images.length > 0) {
+    mainImg.src = product.images[0];
+    thumbsContainer.innerHTML = product.images.map((img, index) => 
+      `<img src="${img}" class="${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)" />`
+    ).join("");
+  }
+
+  // Generar Tallas con lógica de Inventario
+  const sizesContainer = document.getElementById("pvSizes");
+  sizesContainer.innerHTML = Object.entries(product.sizes).map(([size, isAvailable]) => {
+    if (isAvailable) {
+      return `
+        <div class="size-box" onclick="selectSize('${size}', this)">
+          <span class="size-name">${size}</span>
+        </div>`;
+    } else {
+      return `
+        <div class="size-box disabled">
+          <span class="size-name">${size}</span>
+          <span class="agotado-label">Agotada</span>
+        </div>`;
+    }
+  }).join("");
+
+  // Botón comprar bloqueado por defecto
+  const btnComprar = document.getElementById("btnProceedCheckout");
+  btnComprar.disabled = true;
+  btnComprar.textContent = "Selecciona una talla";
+  btnComprar.onclick = () => openCheckoutModal();
+
+  // Mostrar Modal
+  document.getElementById("productViewOverlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeProductView() {
+  document.getElementById("productViewOverlay").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+function changeMainImage(src, element) {
+  document.getElementById("pvMainImage").src = src;
+  document.querySelectorAll(".thumbnail-row img").forEach(el => el.classList.remove("active"));
+  element.classList.add("active");
+}
+
+function selectSize(size, element) {
   currentSize = size;
+  
+  // Actualizar UI de los botones de talla
+  document.querySelectorAll(".size-box").forEach(el => el.classList.remove("active"));
+  element.classList.add("active");
 
-  document.getElementById("modalEmoji").textContent = product.flag;
-  document.getElementById("modalProductName").textContent = product.name;
-  document.getElementById("modalProductSize").textContent = `Talla: ${size}  •  ${product.price}`;
-  document.getElementById("inputProducto").value = product.name;
-  document.getElementById("inputTalla").value = size;
+  // Habilitar botón de comprar
+  const btnComprar = document.getElementById("btnProceedCheckout");
+  btnComprar.disabled = false;
+  btnComprar.textContent = `Comprar talla ${size}`;
+  btnComprar.style.background = "var(--yellow)";
+  btnComprar.style.color = "var(--black)";
+}
 
-  // Clear name/address fields
-  document.getElementById("inputNombre").value = "";
-  document.getElementById("inputApellido").value = "";
-  document.getElementById("inputDireccion").value = "";
+/* =====================================================
+   CHECKOUT MODAL LOGIC (Formulario Final)
+===================================================== */
+function openCheckoutModal() {
+  // Ocultar modal del producto y mostrar formulario
+  document.getElementById("productViewOverlay").classList.remove("open");
+  
+  document.getElementById("modalEmoji").textContent = currentProduct.flag;
+  document.getElementById("modalProductName").textContent = currentProduct.name;
+  document.getElementById("modalProductSize").textContent = `Talla: ${currentSize}  •  ${currentProduct.price}`;
+  document.getElementById("inputProducto").value = currentProduct.name;
+  document.getElementById("inputTalla").value = currentSize;
 
   document.getElementById("modalOverlay").classList.add("open");
   document.body.style.overflow = "hidden";
@@ -362,14 +496,9 @@ function openModal(productId, size) {
 function closeModal() {
   document.getElementById("modalOverlay").classList.remove("open");
   document.body.style.overflow = "";
-  currentProduct = null;
-  currentSize = null;
 }
 
 document.getElementById("modalClose").addEventListener("click", closeModal);
-document.getElementById("modalOverlay").addEventListener("click", (e) => {
-  if (e.target === document.getElementById("modalOverlay")) closeModal();
-});
 
 /* =====================================================
    WHATSAPP SUBMIT
@@ -380,32 +509,19 @@ document.getElementById("btnWhatsApp").addEventListener("click", () => {
   const direccion = document.getElementById("inputDireccion").value.trim();
 
   if (!nombre || !apellido || !direccion) {
-    alert("Por favor completa todos los campos antes de continuar.");
+    alert("Por favor completa todos los campos.");
     return;
   }
 
-  if (!currentProduct || !currentSize) return;
+  const message = `Hola, quiero comprar:\n\n🛍️ Producto: ${currentProduct.name}\n👕 Talla: ${currentSize}\n💰 Precio: ${currentProduct.price}\n\n👤 Nombre: ${nombre} ${apellido}\n📍 Dirección: ${direccion}\n\n¡Gracias!`;
 
-  const message = `Hola, quiero comprar:
-
-🛍️ Producto: ${currentProduct.name}
-👕 Talla: ${currentSize}
-💰 Precio: ${currentProduct.price}
-
-👤 Nombre: ${nombre} ${apellido}
-📍 Dirección: ${direccion}
-
-¡Gracias!`;
-
-  const encodedMsg = encodeURIComponent(message);
-  const waURL = `https://wa.me/${WA_NUMBER}?text=${encodedMsg}`;
-
+  const waURL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
   window.open(waURL, "_blank");
   closeModal();
 });
 
 /* =====================================================
-   HAMBURGER MENU
+   HAMBURGER MENU (Agregado de vuelta)
 ===================================================== */
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
@@ -419,7 +535,7 @@ function closeMenu() {
 }
 
 /* =====================================================
-   SCROLL FADE-IN
+   SCROLL FADE-IN (Agregado de vuelta para que se vean los productos)
 ===================================================== */
 function checkFadeIn() {
   const items = document.querySelectorAll(".fade-up");
@@ -439,9 +555,10 @@ window.addEventListener("resize", checkFadeIn, { passive: true });
 /* =====================================================
    INIT
 ===================================================== */
+// Inicialización de la tienda
 document.addEventListener("DOMContentLoaded", () => {
   renderProducts();
-  setTimeout(checkFadeIn, 100);
+  setTimeout(checkFadeIn, 100); // Esto hace que aparezcan al instante sin tener que hacer scroll
 });
 </script>
 </body>

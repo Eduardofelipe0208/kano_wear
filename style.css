@@ -717,3 +717,182 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+/* =====================================================
+   PRODUCT VIEW MODAL (GALERÍA Y DETALLES)
+===================================================== */
+.product-view-modal {
+  max-width: 850px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.product-view-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .product-view-grid {
+    flex-direction: row;
+  }
+  .product-gallery, .product-details {
+    width: 50%;
+  }
+}
+
+.product-gallery {
+  background: var(--black3);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.main-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.thumbnail-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.thumbnail-row img {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: var(--transition);
+  opacity: 0.6;
+}
+
+.thumbnail-row img:hover, .thumbnail-row img.active {
+  opacity: 1;
+  border-color: var(--yellow);
+}
+
+.product-details {
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pv-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.pv-price {
+  color: var(--yellow);
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.pv-description {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* Selector de Tallas Premium */
+.pv-sizes-section label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.pv-sizes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.size-box {
+  border: 1.5px solid #333;
+  border-radius: 8px;
+  padding: 12px 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: var(--black2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px; /* Para que todas las cajas sean del mismo tamaño */
+}
+
+.size-box .size-name {
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--white);
+}
+
+.size-box:hover:not(.disabled) {
+  border-color: var(--yellow);
+}
+
+.size-box.active {
+  background: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.size-box.active .size-name {
+  color: var(--black);
+}
+
+/* Estado Agotado */
+.size-box.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #222;
+  background: transparent;
+}
+
+.size-box.disabled .size-name {
+  text-decoration: line-through;
+  color: #666;
+}
+
+.size-box.disabled .agotado-label {
+  font-size: 9px;
+  color: #ff4444;
+  font-weight: 800;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.size-box.disabled .agotado-label::before {
+  content: "🔴";
+  font-size: 6px;
+}
