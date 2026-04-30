@@ -723,7 +723,8 @@ footer {
 .product-view-modal {
   max-width: 850px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: auto; /* <-- Ahora permite hacer scroll hacia abajo */
+  max-height: 90vh; /* <-- Asegura que respete el tamaño de la pantalla del celular */
 }
 
 .product-view-grid {

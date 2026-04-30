@@ -231,26 +231,19 @@
 const PRODUCTS = [
   {
     id: 1,
-    name: "Camiseta Argentina Titular",
-    flag: "🇦🇷",
+    name: "Camiseta Brasil Titular",
+    flag: "🇧🇷",
     emoji: "⚽",
     price: "$25",
-    badge: "🔥 Más vendida",
-    description: "La camiseta titular oficial con las 3 estrellas bordadas. Tecnología de ventilación avanzada, escudo premium termoaplicado y ajuste perfecto para rendimiento y uso diario.",
-    // Aquí pones la portada, las fotos extra y el gif al final
+    badge: "⭐ Favorita de los fans",
+    description: "Un diseño clásico e imponente. La camiseta de Brasil presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
     images: [
-      "img/ArgentinaV.jpeg", 
-      "https://images.unsplash.com/photo-1508344928928-7137b29de216?w=500", // Foto 2 (Ejemplo)
-      "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=500", // Foto 3 (Ejemplo)
-      "https://media.giphy.com/media/xT1R9B7cGalGte8O7i/giphy.gif"          // GIF (Ejemplo)
+      "img/BrasilL.jpeg",
+      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
+      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
+      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
     ],
-    // Control de inventario: true = disponible, false = agotada
-    sizes: {
-      "S": true,
-      "M": true,
-      "L": false,  // Esta aparecerá tachada y dirá "Agotada"
-      "XL": true
-    }
+    sizes: { "S": true, "M": false, "L": true, "XL": false }
   },
   {
     id: 2,
@@ -275,7 +268,7 @@ const PRODUCTS = [
     flag: "🇩🇪",
     emoji: "⚽",
     price: "$25",
-    badge: "🆕 Nueva",
+    badge: "💎 Premium",
     description: "Un diseño clásico e imponente. La camiseta de Alemania presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
     images: [
       "img/FranciaL.jpeg",
@@ -292,7 +285,7 @@ const PRODUCTS = [
     flag: "🇵🇹",
     emoji: "⚽",
     price: "$25",
-    badge: "🆕 Nueva",
+    badge: "🔥 Más vendida",
     description: "Un diseño clásico e imponente. La camiseta de Portugal presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
     images: [
       "img/PortugalL.jpeg",
@@ -322,30 +315,56 @@ const PRODUCTS = [
 
   {
     id: 6,
-    name: "Camiseta Brasil Titular",
-    flag: "🇧🇷",
+    name: "Camiseta Argentina Titular",
+    flag: "🇦🇷",
     emoji: "⚽",
     price: "$25",
-    badge: "🆕 Nueva",
-    description: "Un diseño clásico e imponente. La camiseta de Brasil presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
+    badge: "🚀 Lanzamiento 2026",
+    description: "La camiseta titular oficial con las 3 estrellas bordadas. Tecnología de ventilación avanzada, escudo premium termoaplicado y ajuste perfecto para rendimiento y uso diario.",
+    // Aquí pones la portada, las fotos extra y el gif al final
     images: [
-      "img/BrasilL.jpeg",
-      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
-      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
-      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+      "img/ArgentinaV.jpeg", 
+      "https://images.unsplash.com/photo-1508344928928-7137b29de216?w=500", // Foto 2 (Ejemplo)
+      "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=500", // Foto 3 (Ejemplo)
+      "https://media.giphy.com/media/xT1R9B7cGalGte8O7i/giphy.gif"          // GIF (Ejemplo)
     ],
-    sizes: { "S": true, "M": false, "L": true, "XL": false }
+    // Control de inventario: true = disponible, false = agotada
+    sizes: {
+      "S": true,
+      "M": true,
+      "L": false,  // Esta aparecerá tachada y dirá "Agotada"
+      "XL": true
+    }
   },
+
+  
   {
     id: 7,
     name: "Camiseta Colombia Titular",
     flag: "co",
     emoji: "⚽",
     price: "$25",
-    badge: "🆕 Nueva",
+    badge: "⚡ En tendencia",
     description: "Un diseño clásico e imponente. La camiseta de Colombia presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
     images: [
       "img/ColombiaL.jpeg",
+      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
+      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
+      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+    ],
+    sizes: { "S": true, "M": false, "L": true, "XL": false }
+  },
+
+  {
+    id: 8,
+    name: "Camiseta Portugal Black Edition",
+    flag: "🇵🇹",
+    emoji: "⚽",
+    price: "$25",
+    badge: "🚨 Agotándose rápido",
+    description: "Un diseño clásico e imponente. La camiseta de Portugal presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
+    images: [
+      "img/PortugalB.jpeg",
       "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
       "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
       "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
@@ -364,7 +383,7 @@ let currentProduct = null;
 let currentSize = null;
 
 /* =====================================================
-   RENDER GRID CARDS (Tarjetas simplificadas)
+   RENDER GRID CARDS (Tarjetas con 2 botones)
 ===================================================== */
 function renderProducts() {
   const grid = document.getElementById("productsGrid");
@@ -386,9 +405,17 @@ function renderProducts() {
       <div class="product-info">
         <div class="product-name">${p.flag} ${p.name}</div>
         <div class="product-price">${p.price}</div>
-        <button class="btn-comprar" style="background: transparent; border: 1.5px solid var(--yellow); color: var(--yellow);" onclick="openProductView(${p.id})">
-          Ver Detalles
-        </button>
+        
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+          <button class="btn-comprar" style="background: var(--yellow); color: var(--black); width: 100%;" onclick="openProductView(${p.id})">
+            Comprar ahora
+          </button>
+          
+          <button class="btn-comprar" style="background: transparent; border: 1.5px solid var(--yellow); color: var(--yellow); width: 100%;" onclick="openProductView(${p.id})">
+            Ver Detalles
+          </button>
+        </div>
+
       </div>
     `;
     grid.appendChild(card);
@@ -501,23 +528,45 @@ function closeModal() {
 document.getElementById("modalClose").addEventListener("click", closeModal);
 
 /* =====================================================
-   WHATSAPP SUBMIT
+   WHATSAPP SUBMIT (OPTIMIZADO PARA MÓVILES)
 ===================================================== */
-document.getElementById("btnWhatsApp").addEventListener("click", () => {
+document.getElementById("btnWhatsApp").addEventListener("click", (e) => {
+  e.preventDefault(); // Previene cualquier comportamiento extraño del botón
+  
   const nombre = document.getElementById("inputNombre").value.trim();
   const apellido = document.getElementById("inputApellido").value.trim();
   const direccion = document.getElementById("inputDireccion").value.trim();
 
   if (!nombre || !apellido || !direccion) {
-    alert("Por favor completa todos los campos.");
+    alert("⚠️ Por favor completa todos los campos para poder hacer el envío.");
     return;
   }
 
+  // Cambio el texto del botón temporalmente para que el usuario sepa que está cargando
+  const btnSubmit = document.getElementById("btnWhatsApp");
+  const originalText = btnSubmit.innerHTML;
+  btnSubmit.innerHTML = "Abriendo WhatsApp...";
+  btnSubmit.style.opacity = "0.7";
+
   const message = `Hola, quiero comprar:\n\n🛍️ Producto: ${currentProduct.name}\n👕 Talla: ${currentSize}\n💰 Precio: ${currentProduct.price}\n\n👤 Nombre: ${nombre} ${apellido}\n📍 Dirección: ${direccion}\n\n¡Gracias!`;
 
-  const waURL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
-  window.open(waURL, "_blank");
-  closeModal();
+  // Usar api.whatsapp.com es más estable en dispositivos móviles antiguos y nuevos
+  const waURL = `https://api.whatsapp.com/send?phone=${WA_NUMBER}&text=${encodeURIComponent(message)}`;
+
+  // Pequeño retraso para procesar y redirigir en la misma pestaña (evita bloqueo de pop-ups)
+  setTimeout(() => {
+    window.location.href = waURL; // <-- LA MAGIA ESTÁ AQUÍ. Esto no lo bloquea ningún celular.
+    
+    // Restaurar el modal por si el usuario se devuelve
+    closeModal();
+    btnSubmit.innerHTML = originalText;
+    btnSubmit.style.opacity = "1";
+    
+    // Limpiar los inputs para la próxima compra
+    document.getElementById("inputNombre").value = "";
+    document.getElementById("inputApellido").value = "";
+    document.getElementById("inputDireccion").value = "";
+  }, 300);
 });
 
 /* =====================================================
