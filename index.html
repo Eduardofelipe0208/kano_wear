@@ -233,24 +233,9 @@
    PRODUCT DATA — Configura tus imágenes, descripciones y disponibilidad de tallas aquí
 ===================================================== */
 const PRODUCTS = [
+
   {
     id: 1,
-    name: "Camiseta Brasil Titular",
-    flag: "🇧🇷",
-    emoji: "⚽",
-    price: "€18",
-    badge: "⭐ TOP",
-    description: "Un diseño clásico e imponente. La camiseta de Brasil presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
-    images: [
-      "img/BrasilL.jpeg",
-      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
-      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
-      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
-    ],
-    sizes: { "S": true, "M": false, "L": true, "XL": false }
-  },
-  {
-    id: 2,
     name: "Camiseta Alemania Titular",
     flag: "🇩🇪",
     emoji: "⚽",
@@ -258,13 +243,29 @@ const PRODUCTS = [
     badge: "🆕 Nueva",
     description: "Un diseño clásico e imponente. La camiseta de Alemania presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
     images: [
-      "img/AlemaniaL.jpeg",
-      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
-      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
-      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+      "img/alemania/2.png",
+      "img/alemania/1.png",
+      "img/alemania/3.png"
     ],
     sizes: { "S": true, "M": false, "L": true, "XL": false }
   },
+
+  {
+    id: 2,
+    name: "Camiseta Brasil Titular",
+    flag: "🇧🇷",
+    emoji: "⚽",
+    price: "€18",
+    badge: "⭐ TOP",
+    description: "Un diseño clásico e imponente. La camiseta de Brasil presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
+    images: [
+      "img/brasil/1.png",
+      "img/brasil/2.png",
+      "img/brasil/3.png"
+    ],
+    sizes: { "S": true, "M": false, "L": true, "XL": false }
+  },
+  
 
   {
     id: 3,
@@ -275,10 +276,10 @@ const PRODUCTS = [
     badge: "💎 Premium",
     description: "Un diseño clásico e imponente. La camiseta de Alemania presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
     images: [
-      "img/FranciaL.jpeg",
-      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
-      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
-      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+      
+      "img/francia/1.png",
+      "img/francia/2.png",
+      "img/francia/3.png"
     ],
     sizes: { "S": true, "M": false, "L": true, "XL": false }
   },
@@ -292,33 +293,17 @@ const PRODUCTS = [
     badge: "🔥 Más vendida",
     description: "Un diseño clásico e imponente. La camiseta de Portugal presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
     images: [
-      "img/PortugalL.jpeg",
-      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
-      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
-      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+      
+      "img/portugal/1.png",
+      "img/portugal/2.png",
+      "img/portugal/3.png"
     ],
     sizes: { "S": true, "M": false, "L": true, "XL": false }
   },
 
-  {
-    id: 5,
-    name: "Camiseta Colombia Visitante",
-    flag: "co",
-    emoji: "⚽",
-    price: "€18",
-    badge: "🆕 Nueva",
-    description: "Un diseño clásico e imponente. La camiseta de Colombia presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
-    images: [
-      "img/colombiaV.jpeg",
-      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
-      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
-      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
-    ],
-    sizes: { "S": false, "M": false, "L": true, "XL": false }
-  },
 
   {
-    id: 6,
+    id: 5,
     name: "Camiseta Argentina Visitante",
     flag: "🇦🇷",
     emoji: "⚽",
@@ -327,10 +312,10 @@ const PRODUCTS = [
     description: "La camiseta titular oficial con las 3 estrellas bordadas. Tecnología de ventilación avanzada, escudo premium termoaplicado y ajuste perfecto para rendimiento y uso diario.",
     // Aquí pones la portada, las fotos extra y el gif al final
     images: [
-      "img/ArgentinaV.jpeg", 
-      "https://images.unsplash.com/photo-1508344928928-7137b29de216?w=500", // Foto 2 (Ejemplo)
-      "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=500", // Foto 3 (Ejemplo)
-      "https://media.giphy.com/media/xT1R9B7cGalGte8O7i/giphy.gif"          // GIF (Ejemplo)
+      
+      "img/argentinaV/1.png",
+      "img/argentinaV/2.png",
+      "img/argentinaV/3.png"      // GIF (Ejemplo)
     ],
     // Control de inventario: true = disponible, false = agotada
     sizes: {
@@ -341,26 +326,24 @@ const PRODUCTS = [
     }
   },
 
-  
-  {
-    id: 7,
-    name: "Camiseta Colombia Titular",
+    {
+    id: 6,
+    name: "Camiseta Colombia Visitante",
     flag: "co",
     emoji: "⚽",
     price: "€18",
-    badge: "⚡ Tendencia",
+    badge: "🆕 Nueva",
     description: "Un diseño clásico e imponente. La camiseta de Colombia presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
     images: [
-      "img/ColombiaL.jpeg",
-      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
-      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
-      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+      "img/colombiav/1.png",
+      "img/colombiav/2.png",
+      "img/colombiav/3.png"
     ],
-    sizes: { "S": true, "M": false, "L": true, "XL": false }
+    sizes: { "S": false, "M": false, "L": true, "XL": false }
   },
 
-  {
-    id: 8,
+    {
+    id: 7,
     name: "Camiseta Portugal Black Edition",
     flag: "🇵🇹",
     emoji: "⚽",
@@ -368,14 +351,46 @@ const PRODUCTS = [
     badge: "🚨 Pocas Unidades",
     description: "Un diseño clásico e imponente. La camiseta de Portugal presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
     images: [
-      "img/PortugalB.jpeg",
-      "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=500",
-      "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=500",
-      "https://media.giphy.com/media/26AHG5KGFxSkUWw1i/giphy.gif"
+      "img/portugalalt/1.png",
+      "img/portugalalt/2.png",
+      "img/portugalalt/3.png"
+    ],
+    sizes: { "S": true, "M": false, "L": true, "XL": false }
+  },
+  
+  {
+    id: 8,
+    name: "Camiseta Colombia Titular",
+    flag: "co",
+    emoji: "⚽",
+    price: "€18",
+    badge: "⚡ Tendencia",
+    description: "Un diseño clásico e imponente. La camiseta de Colombia presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
+    images: [
+      "img/colombia/1.png",
+      "img/colombia/2.png",
+      "img/colombia/3.png"
     ],
     sizes: { "S": true, "M": false, "L": true, "XL": false }
   },
 
+  
+
+  {
+    id: 9,
+    name: "Camiseta España Titular",
+    flag: "🇵🇹",
+    emoji: "⚽",
+    price: "€18",
+    badge: "🚨 Pocas Unidades",
+    description: "Un diseño clásico e imponente. La camiseta de España presenta tecnología de enfriamiento HEAT.RDY y los detalles oficiales de la selección.",
+    images: [
+      "img/españa/2.png",
+      "img/españa/1.png",
+      "img/españa/3.png"
+    ],
+    sizes: { "S": true, "M": false, "L": true, "XL": false }
+  },
   
   // Añade los demás productos siguiendo exactamente este mismo formato...
 ];
@@ -410,7 +425,7 @@ function renderProducts() {
         <div class="product-name">${p.flag} ${p.name}</div>
         <div class="product-price">${p.price}</div>
         
-        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+        <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 25px;">
           <button class="btn-comprar" style="background: var(--yellow); color: var(--black); width: 100%;" onclick="openProductView(${p.id})">
             Comprar ahora
           </button>
